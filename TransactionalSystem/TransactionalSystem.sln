@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionalSystem", "TransactionalSystem\TransactionalSystem.csproj", "{C4040E4E-7B0D-40D6-B430-2F7AE9D109C2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3FFBC18D-33FA-42F6-9310-7E45003C6766} = {3FFBC18D-33FA-42F6-9310-7E45003C6766}
+		{03584FFA-EAA7-4CD7-B7C7-77981C837CE0} = {03584FFA-EAA7-4CD7-B7C7-77981C837CE0}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionalSystem.DataAccess", "TransactionalSystem.DataAccess\TransactionalSystem.DataAccess.csproj", "{4094EEC4-C73C-478B-9042-83048FB50CD7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionalSystem.Services", "TransactionalSystem.Services\TransactionalSystem.Services.csproj", "{03584FFA-EAA7-4CD7-B7C7-77981C837CE0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4094EEC4-C73C-478B-9042-83048FB50CD7} = {4094EEC4-C73C-478B-9042-83048FB50CD7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionalSystem.Shared", "TransactionalSystem.Shared\TransactionalSystem.Shared.csproj", "{3FFBC18D-33FA-42F6-9310-7E45003C6766}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4040E4E-7B0D-40D6-B430-2F7AE9D109C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4040E4E-7B0D-40D6-B430-2F7AE9D109C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4040E4E-7B0D-40D6-B430-2F7AE9D109C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4040E4E-7B0D-40D6-B430-2F7AE9D109C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4094EEC4-C73C-478B-9042-83048FB50CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4094EEC4-C73C-478B-9042-83048FB50CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4094EEC4-C73C-478B-9042-83048FB50CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4094EEC4-C73C-478B-9042-83048FB50CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03584FFA-EAA7-4CD7-B7C7-77981C837CE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03584FFA-EAA7-4CD7-B7C7-77981C837CE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03584FFA-EAA7-4CD7-B7C7-77981C837CE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03584FFA-EAA7-4CD7-B7C7-77981C837CE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FFBC18D-33FA-42F6-9310-7E45003C6766}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFBC18D-33FA-42F6-9310-7E45003C6766}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFBC18D-33FA-42F6-9310-7E45003C6766}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FFBC18D-33FA-42F6-9310-7E45003C6766}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7AE9F38-3976-4E10-8453-9B0A40C2BCD1}
+	EndGlobalSection
+EndGlobal
