@@ -14,7 +14,6 @@ namespace TransactionalSystem.DataAccess.Repositories
         private readonly TransactionsDbContext _dbContext;
 
         private static readonly object _locker = new object();
-        private bool _acquiredLock = false;
 
         public TransactionsRepository(TransactionsDbContext dbContext)
         {
@@ -23,11 +22,6 @@ namespace TransactionalSystem.DataAccess.Repositories
 
         public async Task<ICollection<TransactionDto>> GetTransactionsAsync()
         {
-            if (_acquiredLock)
-            {
-                Monitor.Wait(_locker);
-            }
-
             var entities = await _dbContext.Transactions.ToListAsync();
 
             var dtos = Mapper.Map<ICollection<TransactionDto>>(entities);
@@ -36,11 +30,6 @@ namespace TransactionalSystem.DataAccess.Repositories
 
         public async Task<TransactionDto> GetTransactionByIdAsync(string id)
         {
-            if (_acquiredLock)
-            {
-                Monitor.Wait(_locker);
-            }
-
             var entity = await _dbContext.Transactions.SingleOrDefaultAsync(t =>
                 t.Id.Equals(id, StringComparison.OrdinalIgnoreCase));
 
@@ -48,29 +37,19 @@ namespace TransactionalSystem.DataAccess.Repositories
             return dto;
         }
 
-        public async Task<TransactionDto> AddTransactionAsync(TransactionDto transactionDto)
+        public TransactionDto AddTransaction(TransactionDto transactionDto)
         {
-            try
+            lock (_locker)
             {
-                Monitor.Enter(_locker, ref _acquiredLock);
-
                 var entity = Mapper.Map<TransactionEntity>(transactionDto);
                 entity.Id = Guid.NewGuid().ToString();
 
-                var entry = await _dbContext.Transactions.AddAsync(entity);
+                var entry = _dbContext.Transactions.Add(entity);
 
-                await _dbContext.SaveChangesAsync();
+                _dbContext.SaveChanges();
 
                 var dto = Mapper.Map<TransactionDto>(entry.Entity);
                 return dto;
-            }
-            finally
-            {
-                if (_acquiredLock)
-                {
-                    Monitor.Exit(_locker);
-                    _acquiredLock = false;
-                }
             }
         }
     }

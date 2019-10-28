@@ -51,7 +51,7 @@ namespace TransactionalSystem.Services
 
             transactionDto.Occured = DateTime.UtcNow;
 
-            var entity = await _transactionsRepository.AddTransactionAsync(transactionDto);
+            var entity = _transactionsRepository.AddTransaction(transactionDto);
 
             var mappedEntity = Mapper.Map<TransactionDetailsModel>(entity);
 

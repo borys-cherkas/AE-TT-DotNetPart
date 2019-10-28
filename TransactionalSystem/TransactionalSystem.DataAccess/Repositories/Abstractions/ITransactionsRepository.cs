@@ -10,6 +10,6 @@ namespace TransactionalSystem.DataAccess.Repositories
 
         Task<TransactionDto> GetTransactionByIdAsync(string id);
 
-        Task<TransactionDto> AddTransactionAsync(TransactionDto transactionDto);
+        TransactionDto AddTransaction(TransactionDto transactionDto);
     }
 }
