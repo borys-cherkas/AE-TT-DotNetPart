@@ -41,6 +41,8 @@ namespace TransactionalSystem
                 app.UseHsts();
             }
 
+            app.UseCors(x => x.AllowAnyOrigin());
+
             app.ConfigureExceptionHandler();
 
             app.UseHttpsRedirection();
